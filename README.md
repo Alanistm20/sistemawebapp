@@ -120,21 +120,16 @@ public class Alquiler {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(nullable = false)
     private LocalDate fechaAlquiler;
-
     private LocalDate fechaDevolucion;
     private BigDecimal montoTotal;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private EstadoAlquiler estado;
-
- @ManyToOne(optional = false)
+     @ManyToOne(optional = false)
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
-
     @OneToMany(mappedBy = "alquiler", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetalleAlquiler> detalles = new ArrayList<>();}
 
