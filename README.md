@@ -27,3 +27,32 @@
 **AUTOR**
 🔮NICOLE TRASLAVIÑA @Alanistm20
 
+**paso 1- cumplir con los requerimientos del examen-**
+
+
+**paso 2- crear bd**
+tabla clientes: (id_cliente, nombre, email). Define tipos y longitudes. Inserta 3 registros de prueba. 
+CREATE TABLE clientes ( 
+    id_cliente SERIAL PRIMARY KEY, 
+    nombre VARCHAR(100) NOT NULL, 
+    email VARCHAR(100) NOT NULL 
+); 
+
+**tabla peliculas: (id_pelicula, titulo, genero, stock). Inserta 3 registros de prueba** 
+CREATE TABLE peliculas ( 
+    id_pelicula SERIAL PRIMARY KEY, 
+    titulo VARCHAR(150) NOT NULL, 
+    genero VARCHAR(50), 
+    stock INT NOT NULL 
+
+); 
+
+
+**tabla alquileres: (id_alquiler autogenerado, fecha, id_cliente, total).**
+CREATE TABLE alquileres ( id_alquiler SERIAL PRIMARY KEY, fecha DATE NOT NULL DEFAULT CURRENT_DATE, id_cliente INT REFERENCES clientes(id_cliente), total NUMERIC(10,2) NOT NULL ); 
+
+
+**tabla detalle_alquiler: clave compuesta (id_alquiler, id_pelicula), cantidad.**
+
+CREATE TABLE detalle_alquiler ( id_alquiler INTEGER REFERENCES alquileres(id_alquiler) ON DELETE CASCADE, id_pelicula INTEGER REFERENCES peliculas(id_pelicula), cantidad INTEGER NOT NULL, PRIMARY KEY (id_alquiler, id_pelicula) ); 
+
