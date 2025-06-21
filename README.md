@@ -35,17 +35,14 @@ tabla clientes: (id_cliente, nombre, email). Define tipos y longitudes. Inserta 
 CREATE TABLE clientes ( 
     id_cliente SERIAL PRIMARY KEY, 
     nombre VARCHAR(100) NOT NULL, 
-    email VARCHAR(100) NOT NULL 
-); 
+    email VARCHAR(100) NOT NULL ); 
 
 **tabla peliculas: (id_pelicula, titulo, genero, stock). Inserta 3 registros de prueba** 
 CREATE TABLE peliculas ( 
     id_pelicula SERIAL PRIMARY KEY, 
     titulo VARCHAR(150) NOT NULL, 
     genero VARCHAR(50), 
-    stock INT NOT NULL 
-
-); 
+    stock INT NOT NULL ); 
 
 
 **tabla alquileres: (id_alquiler autogenerado, fecha, id_cliente, total).**
@@ -53,6 +50,47 @@ CREATE TABLE alquileres ( id_alquiler SERIAL PRIMARY KEY, fecha DATE NOT NULL DE
 
 
 **tabla detalle_alquiler: clave compuesta (id_alquiler, id_pelicula), cantidad.**
-
 CREATE TABLE detalle_alquiler ( id_alquiler INTEGER REFERENCES alquileres(id_alquiler) ON DELETE CASCADE, id_pelicula INTEGER REFERENCES peliculas(id_pelicula), cantidad INTEGER NOT NULL, PRIMARY KEY (id_alquiler, id_pelicula) ); 
+
+
+**USAREMOS LAS ANOTACIONES DE SPRING**
+**@Repository**
+este ejemplo es de **AlquilerRepository**
+package com.cibertec.alquiler_webapp.repository;
+import com.cibertec.alquiler_webapp.model.Alquiler;
+import org.springframework.data.jpa.repository.JpaRepository;
+public interface AlquilerRepository     extends JpaRepository<Alquiler, Long> {
+}
+
+
+**@Controller** -**@Autowired**
+este ejemplo es de **Extraido de AlquilerController**
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+@RequestMapping("/alquileres")
+public class AlquilerController {
+
+    @Autowired
+    private AlquilerService alquilerService;
+
+
+**@service**
+este ejemplo es de **Extraido de AlquilerService.java**
+package com.cibertec.alquiler_webapp.service;
+import com.cibertec.alquiler_webapp.model.Cliente;
+import java.util.List;
+
+public interface ClienteService {
+    List<Cliente> listarTodos();
+    Cliente guardar(Cliente cliente);
+    Cliente buscarPorId(Long id);
+    void eliminar(Long id);
+}
+
+
 
