@@ -54,7 +54,7 @@ CREATE TABLE detalle_alquiler ( id_alquiler INTEGER REFERENCES alquileres(id_alq
 
 
 **USAREMOS LAS ANOTACIONES DE SPRING**
-**@Repository**
+🟣 **@Repository**
 este ejemplo es de **AlquilerRepository**
 
 
@@ -65,7 +65,7 @@ public interface AlquilerRepository     extends JpaRepository<Alquiler, Long> {
 }
 
 
-**@Controller** -**@Autowired**
+🟣 **@Controller** -**@Autowired**
 este ejemplo es de **Extraido de AlquilerController**
 
 
@@ -83,7 +83,7 @@ public class AlquilerController {
     private AlquilerService alquilerService;
 
 
-**@service**
+🟣 **@service**
 este ejemplo es de **Extraido de AlquilerService.java**
 
 
@@ -98,7 +98,7 @@ public interface ClienteService {
     void eliminar(Long id);
 }
 
-**veremos Alquiler.java**
+🟣 **veremos Alquiler.java**
 
 
 package com.cibertec.alquiler_webapp.model;
@@ -135,8 +135,8 @@ public class Alquiler {
 
 aqui vemos la relacion @ManyToOne y @OneToMany , muchos a uno y uno a muchos, y vemos el string que no acepte valores nulos, la fecha de alquiler tampoco acepta valores nulos
 
-**El estado del alquiler (estado) será un enum con valores: Activo, Devuelto, Retrasado.**
-**extraido de EstadoAlquiler.java**
+🟣 **El estado del alquiler (estado) será un enum con valores: Activo, Devuelto, Retrasado.**
+🟣 **extraido de EstadoAlquiler.java**
 package com.cibertec.alquiler_webapp.model;
 
 public enum EstadoAlquiler {
