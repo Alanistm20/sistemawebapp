@@ -1,7 +1,7 @@
 # sistemawebapp
 TECNOLOGIAS APLICADAS
 -  Java 17
-  <p align="center"> <img src="imagenes/java.png" alt="Java" width="100"/> 
+  <p align="center"> <img src="imagenes/java.png" alt="Java 17" width="100"/> 
 - Spring Boot 3
 <p align="center"> <img src="imagenes/spring.png" alt="Spring" width="100"/> 
 - Spring Data JPA
