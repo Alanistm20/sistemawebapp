@@ -11,7 +11,7 @@ TECNOLOGIAS APLICADAS
 - Hibernate Validator
     ![Logo Hibernate](imagenes/hibernate.png)    
 - PostgreSQL / Supabase
-    ![Logo Supabase](imagenes/Supabase.png)    
+    ![Logo Supabase](imagenes/supabase.png)    
 - Bootstrap 5
    ![Logo Bootstrap](imagenes/bootstrap.png)      
 - Maven
