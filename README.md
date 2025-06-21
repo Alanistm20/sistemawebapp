@@ -1,6 +1,7 @@
 # sistemawebapp
 TECNOLOGIAS APLICADAS
--    ![JAVA 17](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/320px-Cat03.jpg](http://oracle.com/img/tech/cb88-java-logo-001.jpg)
+-  Java 17
+  ![Logo Java](imagenes/java.jpg)
 - Spring Boot 3  
 - Spring Data JPA  
 - Thymeleaf  
