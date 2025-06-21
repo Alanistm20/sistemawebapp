@@ -136,8 +136,7 @@ public class Alquiler {
     private Cliente cliente;
 
     @OneToMany(mappedBy = "alquiler", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DetalleAlquiler> detalles = new ArrayList<>();
-}
+    private List<DetalleAlquiler> detalles = new ArrayList<>();}
 
 aqui vemos la relacion @ManyToOne y @OneToMany , muchos a uno y uno a muchos, y vemos el string que no acepte valores nulos, la fecha de alquiler tampoco acepta valores nulos
 
