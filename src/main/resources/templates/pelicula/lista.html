@@ -14,7 +14,7 @@
         <thead>
             <tr>
                 <th>Título</th>
-                <th>Género</th> <!-- NUEVA COLUMNA -->
+                <th>Género</th> 
                 <th>Precio</th>
                 <th>Stock</th>
                 <th>Acciones</th>
@@ -23,7 +23,7 @@
         <tbody>
             <tr th:each="pelicula : ${peliculas}">
                 <td th:text="${pelicula.titulo}"></td>
-                <td th:text="${pelicula.genero}"></td> <!-- NUEVA COLUMNA -->
+                <td th:text="${pelicula.genero}"></td> 
                 <td th:text="${pelicula.precio}"></td>
                 <td th:text="${pelicula.stock}"></td>
                 <td>

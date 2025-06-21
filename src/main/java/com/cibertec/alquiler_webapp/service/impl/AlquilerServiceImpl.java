@@ -38,14 +38,14 @@ public class AlquilerServiceImpl implements AlquilerService {
                 if (pelicula != null) {
                     int cantidadSolicitada = detalle.getCantidad();
 
-                    // Validar stock suficiente
+                    // Validar stock suficiente, no se puede descontar lo que no existe
                     if (pelicula.getStock() < cantidadSolicitada) {
                         throw new IllegalArgumentException("No hay stock suficiente para la película: " + pelicula.getTitulo());
                     }
 
-                    // Descontar stock
+                    // Descontar stock para pelicula
                     pelicula.setStock(pelicula.getStock() - cantidadSolicitada);
-                    peliculaService.guardar(pelicula); // Guardar nuevo stock
+                    peliculaService.guardar(pelicula); // Guardar nuevo stock 
                 }
             }
         }

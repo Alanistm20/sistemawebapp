@@ -23,10 +23,10 @@ public class Alquiler {
     private LocalDate fechaAlquiler;
 
     private LocalDate fechaDevolucion;
-    private BigDecimal montoTotal;
+    private BigDecimal montoTotal; //usare bigdecimal para manejar el dinero
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(nullable = false)//esto para que no sea nulo
     private EstadoAlquiler estado;
 
  @ManyToOne(optional = false)

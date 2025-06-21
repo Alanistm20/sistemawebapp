@@ -32,6 +32,6 @@ public class Cliente {
     private String email;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    @JsonIgnore // Para evitar loops infinitos en respuestas JSON
+    @JsonIgnore 
     private List<Alquiler> alquileres;
 }

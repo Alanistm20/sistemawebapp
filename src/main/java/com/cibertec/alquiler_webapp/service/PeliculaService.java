@@ -9,6 +9,6 @@ public interface PeliculaService {
     Pelicula buscarPorId(Long id);
     void eliminar(Long id);
 
-    // ✅ Nuevo método: actualizar stock
+    // Nuevo método: actualizar stock necesario para pelicula
     void actualizarStock(Long idPelicula, int nuevoStock);
 }

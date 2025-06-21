@@ -26,7 +26,7 @@
             <tr th:each="alquiler : ${alquileres}">
                 <td th:text="${alquiler.cliente.nombre}"></td>
 
-                <!-- Mostrar todas las películas del alquiler -->
+              
                 <td>
                     <ul class="mb-0">
                         <li th:each="detalle : ${alquiler.detalles}"

@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface AlquilerService {
     List<Alquiler> listarTodos();
-    void guardar(Alquiler alquiler); // <- ahora devuelve void
+    void guardar(Alquiler alquiler); 
     Alquiler buscarPorId(Long id);
     void eliminar(Long id);
     

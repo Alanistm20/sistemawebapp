@@ -24,21 +24,21 @@ public class ClienteController {
     @GetMapping
     public String listar(Model model) {
         model.addAttribute("clientes", clienteService.listarTodos());
-        return "cliente/lista"; // Asegúrate de tener cliente/lista.html
+        return "cliente/lista"; // esto verifica mi cliente/lista
     }
 
     // Formulario para nuevo cliente
     @GetMapping("/nuevo")
     public String nuevo(Model model) {
         model.addAttribute("cliente", new Cliente());
-        return "cliente/formulario"; // Asegúrate de tener cliente/formulario.html
+        return "cliente/formulario"; // mi formulario cliente
     }
 
     // Guardar cliente (POST)
     @PostMapping("/guardar")
     public String guardar(@Valid @ModelAttribute("cliente") Cliente cliente, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "cliente/formulario";
+            return "cliente/formulario";//mi formulario clinete
         }
         clienteService.guardar(cliente);
         return "redirect:/clientes";

@@ -10,7 +10,6 @@ import com.cibertec.alquiler_webapp.service.PeliculaService;
 import jakarta.validation.Valid;
 import org.springframework.validation.annotation.Validated;
 import java.math.BigDecimal;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,12 +57,12 @@ public String guardar(@Valid @ModelAttribute("alquiler") Alquiler alquiler,
         for (var detalle : alquiler.getDetalles()) {
             var pelicula = peliculaService.buscarPorId(detalle.getPelicula().getId());
 
-            // Validar que exista la película
+            // Validar que exista la película porque sin eso no puedo calcular el precio o subtotal
             if (pelicula != null) {
-                 detalle.setPelicula(pelicula); // asegura que esté gestionado
+                 detalle.setPelicula(pelicula); // asegura que esté gestionando mis peliculas
                 detalle.setPrecioUnitario(pelicula.getPrecio());
                 detalle.setSubtotal(pelicula.getPrecio().multiply(BigDecimal.valueOf(detalle.getCantidad())));
-                detalle.setAlquiler(alquiler); // Muy importante para JPA
+                detalle.setAlquiler(alquiler); // seteo el alquiler 
                 total = total.add(detalle.getSubtotal());
             }
         }
@@ -95,7 +94,7 @@ public String editar(@PathVariable Long id, Model model) {
     model.addAttribute("listaPeliculas", peliculaService.listarTodos());
     model.addAttribute("estados", EstadoAlquiler.values());
 
-    return "alquiler/formulario"; // Asegúrate de que este archivo exista en templates/alquiler/
+    return "alquiler/formulario"; // quiero que todo este en el mismo formulario, es necesario
 }
          @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Long id) {

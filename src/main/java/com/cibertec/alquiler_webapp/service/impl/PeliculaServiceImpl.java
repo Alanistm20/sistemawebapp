@@ -42,7 +42,7 @@ public class PeliculaServiceImpl implements PeliculaService {
     public void eliminar(Long id) {
         peliculaRepository.deleteById(id);
     }
-    // ✅ Implementación del método para actualizar stock
+    // Implementación del método para actualizar stock porque quiero que se vea al alquilar una pelicula y al eliminar el alquiler
     @Override
     public void actualizarStock(Long idPelicula, int nuevoStock) {
         Pelicula pelicula = buscarPorId(idPelicula);

@@ -39,7 +39,7 @@ public class PeliculaController {
 
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable Long id, Model model) {
-        Pelicula pelicula = peliculaService.buscarPorId(id);
+        Pelicula pelicula = peliculaService.buscarPorId(id);//para buscar las peliculas
         if (pelicula == null) {
             return "redirect:/peliculas";
         }
