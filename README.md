@@ -56,6 +56,8 @@ CREATE TABLE detalle_alquiler ( id_alquiler INTEGER REFERENCES alquileres(id_alq
 **USAREMOS LAS ANOTACIONES DE SPRING**
 **@Repository**
 este ejemplo es de **AlquilerRepository**
+
+
 package com.cibertec.alquiler_webapp.repository;
 import com.cibertec.alquiler_webapp.model.Alquiler;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -65,6 +67,8 @@ public interface AlquilerRepository     extends JpaRepository<Alquiler, Long> {
 
 **@Controller** -**@Autowired**
 este ejemplo es de **Extraido de AlquilerController**
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -81,6 +85,8 @@ public class AlquilerController {
 
 **@service**
 este ejemplo es de **Extraido de AlquilerService.java**
+
+
 package com.cibertec.alquiler_webapp.service;
 import com.cibertec.alquiler_webapp.model.Cliente;
 import java.util.List;
@@ -92,5 +98,55 @@ public interface ClienteService {
     void eliminar(Long id);
 }
 
+**veremos Alquiler.java**
+
+
+package com.cibertec.alquiler_webapp.model;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import java.util.ArrayList;
+import java.util.List;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class Alquiler {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private LocalDate fechaAlquiler;
+
+    private LocalDate fechaDevolucion;
+    private BigDecimal montoTotal;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private EstadoAlquiler estado;
+
+ @ManyToOne(optional = false)
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
+
+    @OneToMany(mappedBy = "alquiler", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DetalleAlquiler> detalles = new ArrayList<>();
+}
+
+aqui vemos la relacion @ManyToOne y @OneToMany , muchos a uno y uno a muchos, y vemos el string que no acepte valores nulos, la fecha de alquiler tampoco acepta valores nulos
+
+**El estado del alquiler (estado) será un enum con valores: Activo, Devuelto, Retrasado.**
+**extraido de EstadoAlquiler.java**
+package com.cibertec.alquiler_webapp.model;
+
+public enum EstadoAlquiler {
+    ACTIVO, DEVUELTO, RETRASADO
+}
 
 
